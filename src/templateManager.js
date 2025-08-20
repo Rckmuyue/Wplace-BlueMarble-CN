@@ -9,29 +9,29 @@ import { base64ToUint8, numberToEncoded } from "./utils";
  * @example
  * // JSON structure for a template
  * {
- *   "whoami": "BlueMarble",
- *   "scriptVersion": "1.13.0",
- *   "schemaVersion": "2.1.0",
- *   "templates": {
- *     "0 $Z": {
- *       "name": "My Template",
- *       "enabled": true,
- *       "tiles": {
- *         "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
- *         "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
- *       }
- *     },
- *     "1 $Z": {
- *       "name": "My Template",
- *       "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
- *       "URLType": "template",
- *       "enabled": false,
- *       "tiles": {
- *         "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
- *         "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
- *       }
- *     }
- *   }
+ * "whoami": "BlueMarble",
+ * "scriptVersion": "1.13.0",
+ * "schemaVersion": "2.1.0",
+ * "templates": {
+ * "0 $Z": {
+ * "name": "My Template",
+ * "enabled": true,
+ * "tiles": {
+ * "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+ * "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+ * }
+ * },
+ * "1 $Z": {
+ * "name": "My Template",
+ * "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
+ * "URLType": "template",
+ * "enabled": false,
+ * "tiles": {
+ * "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+ * "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+ * }
+ * }
+ * }
  * }
  */
 export default class TemplateManager {
@@ -128,7 +128,7 @@ export default class TemplateManager {
     // Creates the JSON object if it does not already exist
     if (!this.templatesJSON) {this.templatesJSON = await this.createJSON(); console.log(`Creating JSON...`);}
 
-    this.overlay.handleDisplayStatus(`Creating template at ${coords.join(', ')}...`);
+    this.overlay.handleDisplayStatus(`创建模板在 ${coords.join(', ')}...`);
 
     // Creates a new template instance
     const template = new Template({
@@ -161,7 +161,7 @@ export default class TemplateManager {
     // Display pixel count statistics with internationalized number formatting
     // This provides immediate feedback to users about template complexity and size
     const pixelCountFormatted = new Intl.NumberFormat().format(template.pixelCount);
-    this.overlay.handleDisplayStatus(`Template created at ${coords.join(', ')}! Total pixels: ${pixelCountFormatted}`);
+    this.overlay.handleDisplayStatus(`模板创建在 ${coords.join(', ')}! 总像素: ${pixelCountFormatted}`);
 
     // Ensure color filter UI is visible when a template is created
     try {
@@ -462,10 +462,10 @@ export default class TemplateManager {
       const wrongStr = new Intl.NumberFormat().format(totalRequired - aggPainted); // Used to be aggWrong, but that is bugged
 
       this.overlay.handleDisplayStatus(
-        `Displaying ${templateCount} template${templateCount == 1 ? '' : 's'}.\nPainted ${paintedStr} / ${requiredStr} • Wrong ${wrongStr}`
+        `正在展示 ${templateCount} 个模板${templateCount == 1 ? '' : 's'}。\n已画 ${paintedStr} / ${requiredStr} • 错误 ${wrongStr}`
       );
     } else {
-      this.overlay.handleDisplayStatus(`Displaying ${templateCount} templates.`);
+      this.overlay.handleDisplayStatus(`正在展示 ${templateCount} 个模板。`);
     }
 
     return await canvas.convertToBlob({ type: 'image/png' });

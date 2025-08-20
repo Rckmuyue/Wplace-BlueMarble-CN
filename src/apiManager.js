@@ -23,8 +23,7 @@ export default class ApiManager {
   /** Determines if the spontaneously received response is something we want.
    * Otherwise, we can ignore it.
    * Note: Due to aggressive compression, make your calls like `data['jsonData']['name']` instead of `data.jsonData.name`
-   * 
-   * @param {Overlay} overlay - The Overlay class instance
+   * * @param {Overlay} overlay - The Overlay class instance
    * @since 0.11.1
   */
   spontaneousResponseListener(overlay) {
@@ -58,7 +57,7 @@ export default class ApiManager {
           if (dataJSON['status'] && dataJSON['status']?.toString()[0] != '2') {
             // The server is probably down (NOT a 2xx status)
             
-            overlay.handleDisplayError(`You are not logged in!\nCould not fetch userdata.`);
+            overlay.handleDisplayError(`您未登录！\n无法获取用户数据。`);
             return; // Kills itself before attempting to display null userdata
           }
 
@@ -73,9 +72,9 @@ export default class ApiManager {
           }
           this.templateManager.userID = dataJSON['id'];
           
-          overlay.updateInnerHTML('bm-user-name', `Username: <b>${escapeHTML(dataJSON['name'])}</b>`); // Updates the text content of the username field
-          overlay.updateInnerHTML('bm-user-droplets', `Droplets: <b>${new Intl.NumberFormat().format(dataJSON['droplets'])}</b>`); // Updates the text content of the droplets field
-          overlay.updateInnerHTML('bm-user-nextlevel', `Next level in <b>${new Intl.NumberFormat().format(nextLevelPixels)}</b> pixel${nextLevelPixels == 1 ? '' : 's'}`); // Updates the text content of the next level field
+          overlay.updateInnerHTML('bm-user-name', `用户名: <b>${escapeHTML(dataJSON['name'])}</b>`); // Updates the text content of the username field
+          overlay.updateInnerHTML('bm-user-droplets', `Droplets数量: <b>${new Intl.NumberFormat().format(dataJSON['droplets'])}</b>`); // Updates the text content of the droplets field
+          overlay.updateInnerHTML('bm-user-nextlevel', `距下一等级还有 <b>${new Intl.NumberFormat().format(nextLevelPixels)}</b> 像素${nextLevelPixels == 1 ? '' : 's'}`); // Updates the text content of the next level field
           break;
 
         case 'pixel': // Request to retrieve pixel data
@@ -85,7 +84,7 @@ export default class ApiManager {
           
           // Don't save the coords if there are previous coords that could be used
           if (this.coordsTilePixel.length && (!coordsTile.length || !coordsPixel.length)) {
-            overlay.handleDisplayError(`Coordinates are malformed!\nDid you try clicking the canvas first?`);
+            overlay.handleDisplayError(`坐标格式不正确！\n您是否先尝试点击了画布？`);
             return; // Kills itself
           }
           
@@ -100,7 +99,7 @@ export default class ApiManager {
 
               let displayCoords = document.querySelector('#bm-display-coords'); // Find the additional pixel coords span
 
-              const text = `(Tl X: ${coordsTile[0]}, Tl Y: ${coordsTile[1]}, Px X: ${coordsPixel[0]}, Px Y: ${coordsPixel[1]})`;
+              const text = `(块 X: ${coordsTile[0]}, 块 Y: ${coordsTile[1]}, 像素 X: ${coordsPixel[0]}, 像素 Y: ${coordsPixel[1]})`;
               
               // If we could not find the addition coord span, we make it then update the textContent with the new coords
               if (!displayCoords) {
