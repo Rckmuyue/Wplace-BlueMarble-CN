@@ -114,7 +114,7 @@ Blue Marble 是在 Chrome 上设计的，但它可能在上面未列出的“不
 <br>
 <img alt="启用 '开发者模式' 和 '允许用户脚本'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall3.png"></li>
 <li>启用“允许用户脚本”。</li>
-<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
+<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/Rckmuyue/Wplace-BlueMarble-CN/releases/download/v0.84.0/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
 <br>
 TamperMonkey 将自动检测用户脚本并提示您安装。</li>
 <li>刷新 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网页。</li>
@@ -160,7 +160,7 @@ TamperMonkey 将自动检测用户脚本并提示您安装。</li>
 <li>为 Firefox 安装 <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/" target="_blank" rel="noopener noreferrer">TamperMonkey</a> 插件。
 <br>
 <img alt="点击 '添加到 Firefox' 按钮" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerFireFoxInstall1.png"></li>
-<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
+<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/Rckmuyue/Wplace-BlueMarble-CN/releases/download/v0.84.0/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
 <br>
 TamperMonkey 将自动检测用户脚本并提示您安装。</li>
 <li>刷新 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网页。</li>
