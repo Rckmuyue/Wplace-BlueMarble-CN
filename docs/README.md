@@ -1,44 +1,45 @@
 <table>
-  <tr>
-    <td><a href="#blue-marble">Blue Marble</a></td>
-    <td valign="top" rowspan="99"><a href="https://discord.gg/tpeBPy46hf"><img alt="Discord Banner" src="https://discord.com/api/guilds/796124137042608188/widget.png?style=banner4"></a></td>
-  </tr>
-  <tr>
-    <td>&emsp;<a href="#quick-guide">Quick Guide</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;<a href="#overview">Overview</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#installation-instructions">Installation Instructions</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#script-settings">Script Settings</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#template-settings">Template Settings</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;<a href="#how-versioning-works">How Versioning Works</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;<a href="#licenses">Licenses</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;<a href="#faq">FAQ</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#is-blue-marble-malware">Is Blue Marble malware?</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#how-can-blue-marble-place-pixels-for-me">How can Blue Marble place pixels for me?</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#how-do-i-hide-the-overlay">How do I hide the overlay?</a></td>
-  </tr>
-  <tr>
-    <td>&emsp;&emsp;<a href="#why-do-game-notifications-appear-on-top-of-the-overlay">Why do game notifications appear on top of the overlay?</a></td>
-  </tr>
+<tr>
+<td><a href="#blue-marble">Blue Marble</a></td>
+<td valign="top" rowspan="99"><a href="https://discord.gg/tpeBPy46hf"><img alt="Discord Banner" src="https://discord.com/api/guilds/796124137042608188/widget.png?style=banner4"></a></td>
+</tr>
+<tr>
+<td>&emsp;<a href="#quick-guide">快速指南</a></td>
+</tr>
+<tr>
+<td>&emsp;<a href="#overview">概述</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#installation-instructions">安装说明</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#script-settings">脚本设置</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#template-settings">模板设置</a></td>
+</tr>
+<tr>
+<td>&emsp;<a href="#how-versioning-works">版本控制如何工作</a></td>
+</tr>
+<tr>
+<td>&emsp;<a href="#licenses">许可证</a></td>
+</tr>
+<tr>
+<td>&emsp;<a href="#faq">常见问题解答</a></td>
+</tr>
+
+<tr>
+<td>&emsp;&emsp;<a href="#is-blue-marble-malware">Blue Marble 是恶意软件吗？</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#how-can-blue-marble-place-pixels-for-me">Blue Marble 如何为我放置像素？</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#how-do-i-hide-the-overlay">如何隐藏叠加层？</a></td>
+</tr>
+<tr>
+<td>&emsp;&emsp;<a href="#why-do-game-notifications-appear-on-top-of-the-overlay">为什么游戏通知会出现在叠加层之上？</a></td>
+</tr>
 </table>
 
 <h1>Blue Marble</h1>
@@ -47,7 +48,8 @@
 <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases" target="_blank" rel="noopener noreferrer"><img alt="Latest Release" src="https://img.shields.io/github/v/release/SwingTheVine/Wplace-BlueMarble?sort=semver&style=flat&label=Latest%20Release&color=blue"></a>
 <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/LICENSE.txt" target="_blank" rel="noopener noreferrer"><img alt="Software License: MPL-2.0" src="https://img.shields.io/badge/Software_License-MPL--2.0-slateblue?style=flat"></a>
 <a href="https://discord.gg/tpeBPy46hf" target="_blank" rel="noopener noreferrer"><img alt="Contact Me" src="https://img.shields.io/badge/Contact_Me-gray?style=flat&logo=Discord&logoColor=white&logoSize=auto&labelColor=cornflowerblue"></a>
-<a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer"><img alt="Blue Marble Website" src="https://img.shields.io/badge/Blue_Marble_Website-Camille_Daguin-blue?style=flat&logo=globe&logoColor=white"></a>
+<a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer"><img
+alt="Blue Marble Website" src="https://img.shields.io/badge/Blue_Marble_Website-Camille_Daguin-blue?style=flat&logo=globe&logoColor=white"></a>
 <a href="" target="_blank" rel="noopener noreferrer"><img alt="WakaTime" src="https://img.shields.io/badge/Coding_Time-111hrs_12mins-blue?style=flat&logo=wakatime&logoColor=black&logoSize=auto&labelColor=white"></a>
 <a href="" target="_blank" rel="noopener noreferrer"><img alt="Total Patches" src="https://img.shields.io/badge/Total_Patches-494-black?style=flat"></a>
 <a href="" target="_blank" rel="noopener noreferrer"><img alt="Total Lines of Code" src="https://tokei.rs/b1/github/SwingTheVine/Wplace-BlueMarble?category=code"></a>
@@ -61,212 +63,248 @@
 <a href="" target="_blank" rel="noopener noreferrer"><img alt="CodeQL" src="https://github.com/SwingTheVine/Wplace-BlueMarble/actions/workflows/github-code-scanning/codeql/badge.svg"></a>
 <a href="https://www.bestpractices.dev/projects/11067" target="_blank" rel="noopener noreferrer"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/11067/badge"></a>
 
-<h2>Quick Guide</h2>
+<h2>快速指南</h2>
 <p>
-  Press the arrows to reveal the option you want.
-  <details>
-    <summary>
-      <b>I want to download Blue Marble.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="#installation-instructions">Click here</a> to view the installation instructions.
-  </details>
-  <details>
-    <summary>
-      <b>I want to ask questions about Blue Marble.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://discord.gg/tpeBPy46hf" target="_blank" rel="noopener noreferrer">Click here</a> for the Discord server invite to the Blue Marble support server.
-    <br>
-    <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/discussions/categories/q-a">Click here</a> for the GitHub help & question page for Blue Marble.
-  </details>
-  <details>
-    <summary>
-      <b>I want to report a bug.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/issues/new/choose">Click here</a> to report a bug, then choose the "Bug Report" option.
-  </details>
-  <details>
-    <summary>
-      <b>I want to suggest a feature.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/issues/new/choose">Click here</a> to suggest a feature, then choose the Feature Request" option.
-  </details>
-  <details>
-    <summary>
-      <b>I want to contribute.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/CONTRIBUTING.md">Click here</a> to read the contributing guidelines.
-  </details>
-  <details>
-    <summary>
-      <b>I want to report a vulnerability.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/security">Click here</a> to submit a vulnerability report.
-  </details>
-  <details>
-    <summary>
-      <b>I want to visit the website.</b> <sup>(Click to Expand)</sup>
-    </summary>
-    <a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer">Click here</a> to visit the official Blue Marble website.
-  </details>
+按箭头展开您想要的选项。
+<details>
+<summary>
+<b>我想下载 Blue Marble。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="#installation-instructions">点击此处</a> 查看安装说明。
+</details>
+<details>
+<summary>
+<b>我对 Blue Marble 有疑问。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://discord.gg/tpeBPy46hf" target="_blank" rel="noopener noreferrer">点击此处</a> 加入 Blue Marble 支持 Discord 服务器。
+<br>
+<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/discussions/categories/q-a">点击此处</a> 访问 Blue Marble 的 GitHub 帮助和问题页面。
+</details>
+<details>
+<summary>
+<b>我想报告一个错误。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/issues/new/choose">点击此处</a> 报告错误，然后选择“Bug Report”选项。
+</details>
+<details>
+<summary>
+<b>我想建议一个功能。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/issues/new/choose">点击此处</a> 建议一个功能，然后选择“Feature Request”选项。
+</details>
+<details>
+<summary>
+<b>我想做贡献。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/CONTRIBUTING.md">点击此处</a> 阅读贡献指南。
+</details>
+<details>
+<summary>
+<b>我想报告一个漏洞。</b> <sup>(点击展开)</sup>
+
+</summary>
+<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/security">点击此处</a> 提交漏洞报告。
+</details>
+<details>
+<summary>
+<b>我想访问网站。</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer">点击此处</a> 访问 Blue Marble 官方网站。
+</details>
 </p>
 
-<h2>Overview</h2>
+<h2>概述</h2>
 <p>
-  Welcome to Blue Marble! Blue Marble is a userscript for the website <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a>. The purpose of Blue Marble is to allow you to take an image, and layer it onto the canvas! That way, you can easily trace the image of your art, without having to look back and forth between multiple tabs/monitors. In addition, Blue Marble supports some neat extra features such as: 
-  <ul>
-    <li>Displaying the number of pixels you need to level up</li>
-    <li>Displaying a simple coordinate system (tile coordinats & pixel coordinates)</li>
-    <li>Allowing you to move the color palette to the top of the screen when placing pixels</li>
-    <li>Allowing you to use the eyedropper on the template image, provided the colors are correct</li>
-    <li>...and more!</li>
-  </ul>
-  If you like this userscript, please ⭐ the repository! For more information and updates, visit the <a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer">Blue Marble website</a>. If you wish to contribute to Blue Marble, check out the <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> file in <code>docs/</code>.
+欢迎来到 Blue Marble！Blue Marble 是一个用于 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网站的用户脚本。
+Blue Marble 的目的是让您能够将一个图像作为图层叠加到画布上！
+这样，您就可以轻松地描摹您的艺术作品图像，而无需在多个标签/显示器之间来回切换。
+此外，Blue Marble 还支持一些很棒的额外功能，例如：
+<ul>
+<li>显示您需要升级的像素数量</li>
+<li>显示一个简单的坐标系（瓦片坐标和像素坐标）</li>
+<li>允许您在放置像素时将调色板移动到屏幕顶部</li>
+<li>允许您在模板图像上使用吸管工具，前提是颜色正确</li>
+<li>...等等！</li>
+</ul>
+如果您喜欢这个用户脚本，请给存储库加 ⭐！
+更多信息和更新，请访问 <a href="https://bluemarble.camilledaguin.fr/" target="_blank" rel="noopener noreferrer">Blue Marble 网站</a>。
+如果您想为 Blue Marble 做出贡献，请查看 <code>docs/</code> 中的 <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> 文件。
+<img alt="Blue Marble 模板展示图" src="./assets/Showcase1.png">
 
-  <img alt="Showcase image of Blue Marble template" src="./assets/Showcase1.png">
+<h3>安装说明</h3>
+<a href="" target="_blank" rel="noopener noreferrer"><img alt="Supported Browsers" src="https://img.shields.io/badge/Supported%20Browsers-Chrome%20%7C%20Firefox%2A%20%7C%20Safari%20%7C%20Edge%20%7C%20Brave-orange?style=flat"></a>
+<a href="" target="_blank" rel="noopener noreferrer"><img alt="Unupported Browsers" src="https://img.shields.io/badge/Unsupported%20Browsers-Firefox%2A%20%7C%20Kiwi%20%7C%20Vivaldi-red?style=flat"></a>
+<p>
+Blue Marble 已验证可在移动设备上运行。
+Blue Marble 是在 Chrome 上设计的，但它可能在上面未列出的“不受支持”的浏览器上也能工作。
+某些版本/分支的 Firefox 可以使用，而另一些则不行。
+<br>
+下面是 Blue Marble 的安装说明。
+点击箭头以展开您想看到的说明。蓝色文本是链接。
+<details>
+<summary>
+<b>在 Chrome 上安装</b> <sup>(点击展开)</sup>
+</summary>
+<a href="https://www.youtube.com/watch?v=gg5oiJcftEc" target="_blank" rel="noopener noreferrer"><img alt="安装教程" src="https://img.shields.io/badge/Install_Tutorial-gray?style=flat&logo=YouTube&logoColor=white&logoSize=auto&labelColor=darkred"></a>
+<ol>
+<li>为 Chrome 安装 <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener noreferrer">TamperMonkey</a> 扩展。
+<br>
+<img alt="点击 '添加扩展' 按钮" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall1.png"></li>
+<li>右键单击该扩展。
+<br>
+<img alt="进入 '管理扩展' 菜单" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall2.png"></li>
+<li>左键单击“管理扩展”。</li>
+<li>启用“开发者模式”。
+<br>
+<img alt="启用 '开发者模式' 和 '允许用户脚本'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall3.png"></li>
+<li>启用“允许用户脚本”。</li>
+<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
+<br>
+TamperMonkey 将自动检测用户脚本并提示您安装。</li>
+<li>刷新 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网页。</li>
+</ol>
 
-  <h3>Installation Instructions</h3>
-  <a href="" target="_blank" rel="noopener noreferrer"><img alt="Supported Browsers" src="https://img.shields.io/badge/Supported%20Browsers-Chrome%20%7C%20Firefox%2A%20%7C%20Safari%20%7C%20Edge%20%7C%20Brave-orange?style=flat"></a>
-  <a href="" target="_blank" rel="noopener noreferrer"><img alt="Unupported Browsers" src="https://img.shields.io/badge/Unsupported%20Browsers-Firefox%2A%20%7C%20Kiwi%20%7C%20Vivaldi-red?style=flat"></a>
-  <p>
-    Blue Marble has been verified to work on mobile devices. Blue Marble was designed on Chrome, but Blue Marble might work on "unsupported" browsers not listed above. Some versions/forks of Firefox work. Some versions/forks of Firefox do not work.
-    <br>
-    Installation instructions for Blue Marble are below. Click the arrows to expand the instructions you want to see. Blue text is a link.
-    <details>
-      <summary>
-        <b>Install Chrome</b> <sup>(Click to expand)</sup>
-      </summary>
-      <a href="https://www.youtube.com/watch?v=gg5oiJcftEc" target="_blank" rel="noopener noreferrer"><img alt="Install Tutorial" src="https://img.shields.io/badge/Install_Tutorial-gray?style=flat&logo=YouTube&logoColor=white&logoSize=auto&labelColor=darkred"></a>
-      <ol>
-        <li>Install the <a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener noreferrer">TamperMonkey</a> extension for Chrome.
-        <br>
-        <img alt="Click the 'Add extension' button" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall1.png"></li>
-        <li>Right-click the extension.
-        <br>
-        <img alt="Enter the 'Manage Extension' menu" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall2.png"></li>
-        <li>Left-click "Manage Extension."</li>
-        <li>Enable "Developer Mode."
-        <br>
-        <img alt="Enable 'Developer Mode' and 'Allow user scripts'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall3.png"></li>
-        <li>Enable "Allow user scripts."</li>
-        <li><strong>One-click install:</strong> Click this link to Install Blue Marble directly: <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>Install Blue Marble</strong></a>
-        <br>
-        TamperMonkey will automatically detect the userscript and prompt you to Install it.</li>
-        <li>Refresh the <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> webpage.</li>
-      </ol>
-    </details>
-    <details>
-      <summary>
-        <b>Install on Microsoft Edge</b> <sup>(Click to expand)</sup>
-      </summary>
-      <ol>
-        <li>Install the <a href="https://microsoftedge.microsoft.com/addons/detail/iikmkjmpaadaobahmlepeloendndfphd" target="_blank" rel="noopener noreferrer">TamperMonkey</a> plugin for Microsoft Edge.
-        <br>
-        <img alt="Click the 'Get' button" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall1.png"></li>
-        <li>Right-click the extension.
-        <br>
-        <img alt="Enter the 'Manage Extension' menu" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall2.png"></li>
-        <li>Left-click "Manage Extension."</li>
-        <li>Enable "Developer Mode."
-        <br>
-        <img alt="Enable 'Developer Mode'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall3.png"></li>
-        <li>Download the <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases" target="_blank" rel="noopener noreferrer">BlueMarble.user.js</a> file in the "Assets" of the latest release.</li>
-        <li>Open the TamperMonkey Dashboard.
-        <br>
-        <img alt="Enter the TamperMonkey 'Dashboard'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall4.png"></li>
-        <li>Drag the <code>BlueMarble.user.js</code> file inside the dashboard of TamperMonkey.
-        <br>
-        <img alt="Drag the userscript into the dashboard" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall5.png"></li>
-        <li>Click the "Install" button to Install Blue Marble.
-        <br>
-        <img alt="Click the 'Install' button" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall6.png"></li>
-        <li>Enable Blue Marble inside the TamperMonkey dashboard.
-        <br>
-        <img alt="Enable Blue Marble" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall7.png"></li>
-        <li>Refresh the <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> webpage.</li>
-      </ol>
-    </details>
-    <details>
-      <summary>
-        <b>Install on Firefox</b> <sup>(Click to expand)</sup>
-      </summary>
-      <ol>
-        <li>Install the <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/" target="_blank" rel="noopener noreferrer">TamperMonkey</a> plugin for Firefox.
-        <br>
-        <img alt="Click the 'Add to Firefox' button" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerFireFoxInstall1.png"></li>
-        <li><strong>One-click install:</strong> Click this link to Install Blue Marble directly: <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>Install Blue Marble</strong></a>
-        <br>
-        TamperMonkey will automatically detect the userscript and prompt you to install it.</li>
-        <li>Refresh the <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> webpage.</li>
-      </ol>
-    </details>
-  </p>
-
-  <h3>Template Instructions</h3>
-  <p>
-    Blue Marble will display your template as the same size. If your image is 500 pixels tall and 300 pixels wide, the template will be 500 pixels tall and 300 pixels wide. Here is the instructions to display a template image on the canvas:
-    <ol>
-      <li>Find the pixel of the top left corner. Fill in <code>Tl X</code>, <code>Tl Y</code>, <code>Px X</code>, and <code>Px Y</code> with the coordinates. You can use the "Pin" icon to auto-fill the coordinates after clicking the pixel.
-      <br>
-      <img alt="Find template coordinates" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/TemplateCoordinates1.png"></li>
-      <li>Upload a PNG or WEBP image.</li>
-      <li>Click the "Enable" button.</li>
-    </ol>
-  </p>
-
-  <h3>Script Settings</h3>
-  <p>
-    There are many settings available for the Blue Marble userscript! Through these settings, you can control how the script behaves.
-  </p>
-
-  <h3>Template Settings</h3>
-  <p>
-    <h4>Transparent Pixels</h4>
-    <p>
-      Templates for Blue Marble work slightly different from normal. Since there is a "Transparent" color, and transparent pixels in templates are typically ignored, your template should have a custom color to signify "Transparent" colored pixels. If a specific pixel can be any color, it should be transparent in the template. If a specific pixel should be "Transparent" color, it should have the <code>#deface</code> hex color. Any <code>#deface</code> colored pixel in your template will be interpereted as the "Transparent" color. Any transparent colored pixel in your template will be interpereted as ignored.
-    </p>
-    <h4>Coordinates</h4>
-    <p>
-      <h5>Tile Coordinates</h5>
-      <p>
-        The coordinate system for wplace.live is unique. Instead of all pixels having a global coordinate number (x, y), the coordinate number is relative to the tile. This means you need to know the tile number and the coordinate number to do anything. In Blue Marble, the tile coordinates and the pixel coordinates are displayed when you click on a pixel. These are the coordinates you should use for aligning a template.
-        <br>
-        <img alt="Where to find tile coordinates" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/TemplateCoordinatesDisplay.png">
-      </p>
-      <h5>Template Coordinates</h5>
-      <p>
-        The template is aligned from the top left corner of the template. You can auto-fill this position using the "pin" icon next to the coordinate input boxes.
-      </p>
-    </p>
-  </p>
+</details>
+<details>
+<summary>
+<b>在 Microsoft Edge 上安装</b> <sup>(点击展开)</sup>
+</summary>
+<ol>
+<li>为 Microsoft Edge 安装 <a href="https://microsoftedge.microsoft.com/addons/detail/iikmkjmpaadaobahmlepeloendndfphd" target="_blank" rel="noopener noreferrer">TamperMonkey</a> 插件。
+<br>
+<img alt="点击 '获取' 按钮" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall1.png"></li>
+<li>右键单击该扩展。
+<br>
+<img alt="进入 '管理扩展' 菜单" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall2.png"></li>
+<li>左键单击“管理扩展”。</li>
+<li>启用“开发者模式”。
+<br>
+<img alt="启用 '开发者模式'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall3.png"></li>
+<li>在最新版本的“Assets”中下载 <a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases" target="_blank" rel="noopener noreferrer">BlueMarble.user.js</a> 文件。</li>
+<li>打开 TamperMonkey 仪表板。
+<br>
+<img alt="进入 TamperMonkey '仪表板'" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerEdgeInstall4.png"></li>
+<li>将 <code>BlueMarble.user.js</code> 文件拖入 TamperMonkey 仪表板。
+<br>
+<img alt="将用户脚本拖入仪表板" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall5.png"></li>
+<li>点击“安装”按钮来安装 Blue Marble。
+<br>
+<img alt="点击 '安装' 按钮" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall6.png"></li>
+<li>在 TamperMonkey 仪表板中启用 Blue Marble。
+<br>
+<img alt="启用 Blue Marble" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerChromeInstall7.png"></li>
+<li>刷新 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网页。</li>
+</ol>
+</details>
+<details>
+<summary>
+<b>在 Firefox 上安装</b> <sup>(点击展开)</sup>
+</summary>
+<ol>
+<li>为 Firefox 安装 <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/" target="_blank" rel="noopener noreferrer">TamperMonkey</a> 插件。
+<br>
+<img alt="点击 '添加到 Firefox' 按钮" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/ComputerFireFoxInstall1.png"></li>
+<li><strong>一键安装：</strong> 点击此链接直接安装 Blue Marble：<a href="https://github.com/SwingTheVine/Wplace-BlueMarble/releases/download/pre/BlueMarble.user.js" target="_blank" rel="noopener noreferrer"><strong>安装 Blue Marble</strong></a>
+<br>
+TamperMonkey 将自动检测用户脚本并提示您安装。</li>
+<li>刷新 <a href="https://wplace.live/" target="_blank" rel="noopener noreferrer">wplace.live</a> 网页。</li>
+</ol>
+</details>
 </p>
 
-<h2>How Versioning Works</h2>
+<h3>模板说明</h3>
 <p>
-  The versioning system for this userscript follows the <a href="https://semver.org/" target="_blank" rel="noopener noreferrer">Semantic Versioning rules</a>. As such, it is formatted in an <code>X.Y.Z</code> format where:
-  <ul>
-    <li>X is the major version. This is incremented when a non-backward compatible update is pushed. This is for new features that break previous versions of the userscript. Additionally, if wplace.live breaks the userscript, this will be incremented.</li>
-    <li>Y is the minor version. This is incremented whenever I push to GitHub. This is for stable bug-fixes and new (non-breaking) features.</li>
-    <li>Z is the patch version. This is incremented whenever I launch a development version of the userscript to test a patch. This is for unstable bug-fixes/features.</li>
-  </ul>
+
+Blue Marble 将以相同尺寸显示您的模板。
+如果您的图像高 500 像素，宽 300 像素，模板也将高 500 像素，宽 300 像素。
+以下是在画布上显示模板图像的说明：
+<ol>
+<li>找到左上角的像素。
+使用坐标填写 <code>Tl X</code>、<code>Tl Y</code>、<code>Px X</code> 和 <code>Px Y</code>。
+您可以使用“Pin”图标在点击像素后自动填充坐标。
+<br>
+<img alt="查找模板坐标" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/TemplateCoordinates1.png"></li>
+<li>上传一个 PNG 或 WEBP 图像。</li>
+<li>点击“启用”按钮。</li>
+</ol>
+
 </p>
 
-<h2>Licenses</h2>
+<h3>脚本设置</h3>
 <p>
-  (Below, all mentions of the "userscript" refer to the "Blue Marble" userscript made by SwingTheVine) <br>
-  Most of this userscript is licensed under the <code>Mozilla Public License Version 2.0</code> (MPL-2.0). All software, code, and libraries in this repository are licensed under the MPL-2.0 license. However, the "Blue Marble" image in this userscript is owned by NASA and is licensed under the <code>Creative Commons 0 1.0 Universal</code> (CC0 1.0) license.
+Blue Marble 用户脚本有许多可用设置！
+通过这些设置，您可以控制脚本的行为。
 </p>
 
-<h2>FAQ</h2>
+<h3>模板设置</h3>
 <p>
-  <h3>Is Blue Marble malware?</h3>
-  <p><b>A:</b> Blue Marble does not contain malicious code. The Blue Marble code can be found in the <code>src/</code> folder. If you worry about Blue Marble being malware, you can read the code, then bundle it yourself using the tools in <code>build/</code>.
+<h4>透明像素</h4>
+<p>
+Blue Marble 的模板与普通模板略有不同。
+由于有一个“透明”颜色，并且模板中的透明像素通常会被忽略，因此您的模板应该有一个自定义颜色来表示“透明”颜色的像素。
+如果某个特定像素可以是任何颜色，则在模板中应为透明。
+如果某个特定像素应该是“透明”颜色，则应使用 <code>#deface</code> 十六进制颜色。
+模板中任何 <code>#deface</code> 颜色的像素都将被解释为“透明”颜色。
+模板中任何透明颜色的像素都将被解释为忽略。
+</p>
+<h4>坐标</h4>
+<p>
+<h5>瓦片坐标</h5>
+<p>
+wplace.live 的坐标系是独特的。
+所有的像素没有一个全局坐标号 (x, y)，而是其坐标号是相对于瓦片的。
+这意味着您需要知道瓦片号和坐标号才能做任何事。
+在 Blue Marble 中，当您点击一个像素时，会显示瓦片坐标和像素坐标。
+这些是您应该用于对齐模板的坐标。
+<br>
+<img alt="在哪里找到瓦片坐标" src="https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/docs/assets/TemplateCoordinatesDisplay.png">
+</p>
+<h5>模板坐标</h5>
+<p>
+模板从模板的左上角对齐。
+您可以使用坐标输入框旁边的“pin”图标自动填充此位置。
+</p>
+</p>
+</p>
+</p>
 
-  <h3>How can Blue Marble place pixels for me?</h3>
-  <p><b>A:</b> Unfortunately, Blue Marble will not support the automatic placement of pixels without user interaction because it is not allowed by Wplace.
+<h2>版本控制如何工作</h2>
+<p>
+此用户脚本的版本控制系统遵循 <a href="https://semver.org/" target="_blank" rel="noopener noreferrer">语义化版本控制规则</a>。
+因此，它采用 <code>X.Y.Z</code> 格式，其中：
+<ul>
+<li>X 是主版本号。
+当推送非向后兼容的更新时，此版本号会增加。
+这适用于会破坏先前版本用户脚本的新功能。
+此外，如果 wplace.live 破坏了用户脚本，此版本号也会增加。</li>
+<li>Y 是次版本号。
+每当我推送到 GitHub 时，此版本号都会增加。这适用于稳定的错误修复和新的（非破坏性的）功能。</li>
+<li>Z 是补丁版本号。
+每当我发布一个开发版本的用户脚本来测试补丁时，此版本号都会增加。
+这适用于不稳定的错误修复/功能。</li>
+</ul>
+</p>
 
-  <h3>How do I hide the overlay?</h3>
-  <p><b>A:</b> Turn the userscript off and refresh the page.</p>
+<h2>许可证</h2>
+<p>
+（下文中所有提及“用户脚本”的地方均指由 SwingTheVine 制作的“Blue Marble”用户脚本）<br>
+该用户脚本的大部分内容都遵循 <code>Mozilla Public License Version 2.0</code> (MPL-2.0) 许可。
+该存储库中的所有软件、代码和库均根据 MPL-2.0 许可证获得许可。
+然而，此用户脚本中的“Blue Marble”图像归 NASA 所有，并根据 <code>Creative Commons 0 1.0 Universal</code> (CC0 1.0) 许可证获得许可。
+</p>
 
-  <h3>Why do game notifications appear on top of the overlay?</h3>
-  <p><b>A:</b> Game notifications only appear when they need immediate attention. Therefore, they have priority over the overlay (which typically needs no attention).</p>
+<h2>常见问题解答</h2>
+<p>
+<h3>Blue Marble 是恶意软件吗？</h3>
+<p><b>答：</b> Blue Marble 不包含恶意代码。
+Blue Marble 的代码可以在 <code>src/</code> 文件夹中找到。
+如果您担心 Blue Marble 是恶意软件，可以阅读代码，然后使用 <code>build/</code> 中的工具自行打包。
+<h3>Blue Marble 如何为我放置像素？</h3>
+<p><b>答：</b> 不幸的是，Blue Marble 不支持在没有用户交互的情况下自动放置像素，因为这是 Wplace 所不允许的。
+<h3>如何隐藏叠加层？</h3>
+<p><b>答：</b> 关闭用户脚本并刷新页面。</p>
+
+<h3>为什么游戏通知会出现在叠加层之上？</h3>
+<p><b>答：</b> 游戏通知只有在需要立即关注时才会出现。
+因此，它们的优先级高于叠加层（通常不需要关注）。</p>
 </p>
