@@ -9,29 +9,29 @@ import { base64ToUint8, numberToEncoded } from "./utils";
  * @example
  * // JSON structure for a template
  * {
- * "whoami": "BlueMarble",
- * "scriptVersion": "1.13.0",
- * "schemaVersion": "2.1.0",
- * "templates": {
- * "0 $Z": {
- * "name": "My Template",
- * "enabled": true,
- * "tiles": {
- * "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
- * "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
- * }
- * },
- * "1 $Z": {
- * "name": "My Template",
- * "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
- * "URLType": "template",
- * "enabled": false,
- * "tiles": {
- * "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
- * "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
- * }
- * }
- * }
+ *   "whoami": "BlueMarble",
+ *   "scriptVersion": "1.13.0",
+ *   "schemaVersion": "2.1.0",
+ *   "templates": {
+ *     "0 $Z": {
+ *       "name": "My Template",
+ *       "enabled": true,
+ *       "tiles": {
+ *         "1231,0047,183,593": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+ *         "1231,0048,183,000": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+ *       }
+ *     },
+ *     "1 $Z": {
+ *       "name": "My Template",
+ *       "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
+ *       "URLType": "template",
+ *       "enabled": false,
+ *       "tiles": {
+ *         "375,1846,276,188": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+ *         "376,1846,000,188": "data:image/png;AAAFCAYAAACNbyblAAAAHElEQVQI12P4"
+ *       }
+ *     }
+ *   }
  * }
  */
 export default class TemplateManager {
@@ -161,7 +161,7 @@ export default class TemplateManager {
     // Display pixel count statistics with internationalized number formatting
     // This provides immediate feedback to users about template complexity and size
     const pixelCountFormatted = new Intl.NumberFormat().format(template.pixelCount);
-    this.overlay.handleDisplayStatus(`模板已在 ${coords.join(', ')} 处创建! 总像素数: ${pixelCountFormatted}`);
+    this.overlay.handleDisplayStatus(`模板已在 ${coords.join(', ')}! 处创建! 总像素数: ${pixelCountFormatted}`);
 
     // Ensure color filter UI is visible when a template is created
     try {
@@ -320,9 +320,9 @@ export default class TemplateManager {
           const tempCanvas = new OffscreenCanvas(tempWidth, tempHeight);
           const tempContext = tempCanvas.getContext('2d', { willReadFrequently: true });
           tempContext.imageSmoothingEnabled = false;
-          tempContext.clearRect(0, 0, tempWidth, tempH);
+          tempContext.clearRect(0, 0, tempWidth, tempHeight);
           tempContext.drawImage(template.bitmap, 0, 0);
-          const tImg = tempContext.getImageData(0, 0, tempWidth, tempH);
+          const tImg = tempContext.getImageData(0, 0, tempWidth, tempHeight);
           const tData = tImg.data; // Tile Data, Template Data, or Temp Data????
 
           const offsetX = Number(template.pixelCoords[0]) * this.drawMult;
@@ -330,8 +330,8 @@ export default class TemplateManager {
 
           // Loops over all pixels in the template
           // Assigns each pixel a color (if center pixel)
-          for (let y = 0; y < tempH; y++) {
-            for (let x = 0; x < tempW; x++) {
+          for (let y = 0; y < tempHeight; y++) {
+            for (let x = 0; x < tempWidth; x++) {
               // Purpose: Count which pixels are painted correctly???
 
               // Only evaluate the center pixel of each shread block
@@ -344,7 +344,7 @@ export default class TemplateManager {
               // IF the pixel is out of bounds of the template, OR if the pixel is outside of the tile, then skip the pixel
               if (gx < 0 || gy < 0 || gx >= drawSize || gy >= drawSize) { continue; }
 
-              const templatePixelCenter = (y * tempW + x) * 4; // Shread block center pixel
+              const templatePixelCenter = (y * tempWidth + x) * 4; // Shread block center pixel
               const templatePixelCenterRed = tData[templatePixelCenter]; // Shread block's center pixel's RED value
               const templatePixelCenterGreen = tData[templatePixelCenter + 1]; // Shread block's center pixel's GREEN value
               const templatePixelCenterBlue = tData[templatePixelCenter + 2]; // Shread block's center pixel's BLUE value
@@ -427,7 +427,7 @@ export default class TemplateManager {
         } else {
           // ELSE we need to apply the color filter
 
-          console.log('正在应用颜色过滤器……');
+          console.log('正在应用颜色过滤器...');
 
           const tempW = template.bitmap.width;
           const tempH = template.bitmap.height;
@@ -518,7 +518,7 @@ export default class TemplateManager {
       const wrongStr = new Intl.NumberFormat().format(totalRequired - aggPainted); // Used to be aggWrong, but that is bugged
 
       this.overlay.handleDisplayStatus(
-        `正在显示 ${templateCount} 个模板。\n已绘制 ${paintedStr} / ${requiredStr} • 错误 ${wrongStr}`
+        `正在显示 ${templateCount} template${templateCount == 1 ? '' : 's'} 个模板。\n已绘制 ${paintedStr} / ${requiredStr} • 错误 ${wrongStr}`
       );
     } else {
       this.overlay.handleDisplayStatus(`正在显示 ${templateCount} 个模板。`);
@@ -566,7 +566,7 @@ export default class TemplateManager {
           const templateKeyArray = templateKey.split(' '); // E.g., "0 $Z" -> ["0", "$Z"]
           const sortID = Number(templateKeyArray?.[0]); // Sort ID of the template
           const authorID = templateKeyArray?.[1] || '0'; // User ID of the person who exported the template
-          const displayName = templateValue.name || `模板 ${sortID || ''}`; // Display name of the template
+          const displayName = templateValue.name || `Template ${sortID || ''}`; // Display name of the template
           //const coords = templateValue?.coords?.split(',').map(Number); // "1,2,3,4" -> [1, 2, 3, 4]
           const tilesbase64 = templateValue.tiles;
           const templateTiles = {}; // Stores the template bitmap tiles for each tile.
