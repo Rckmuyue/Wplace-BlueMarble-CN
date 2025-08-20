@@ -60,7 +60,7 @@ inject(() => {
       } else {
         // ...else the blobID is unexpected. We don't know what it is, but we know for sure it is not a blob. This means we ignore it.
 
-        consoleWarn(`%c${name}%c: Attempted to retrieve a blob (%s) from queue, but the blobID was not a function! Skipping...`, consoleStyle, '', blobID);
+        consoleWarn(`%c${name}%c: 尝试从队列中检索 blob (%s)，但 blobID 不是一个函数！跳过...`, consoleStyle, '', blobID);
       }
 
       fetchedBlobQueue.delete(blobID); // Delete the blob from the queue, because we don't need to process it again
@@ -85,7 +85,7 @@ inject(() => {
 
 
       // Since this code does not run in the userscript, we can't use consoleLog().
-      console.log(`%c${name}%c: Sending JSON message about endpoint "${endpointName}"`, consoleStyle, '');
+      console.log(`%c${name}%c: 正在发送有关端点 "${endpointName}" 的 JSON 消息`, consoleStyle, '');
 
       // Sends a message about the endpoint it spied on
       cloned.json()
@@ -97,7 +97,7 @@ inject(() => {
           }, '*');
         })
         .catch(err => {
-          console.error(`%c${name}%c: Failed to parse JSON: `, consoleStyle, '', err);
+          console.error(`%c${name}%c: JSON 解析失败： `, consoleStyle, '', err);
         });
     } else if (contentType.includes('image/') && (!endpointName.includes('openfreemap') && !endpointName.includes('maps'))) {
       // Fetch custom for all images but opensourcemap
@@ -107,7 +107,7 @@ inject(() => {
       const blob = await cloned.blob(); // The original blob
 
       // Since this code does not run in the userscript, we can't use consoleLog().
-      console.log(`%c${name}%c: ${fetchedBlobQueue.size} Sending IMAGE message about endpoint "${endpointName}"`, consoleStyle, '');
+      console.log(`%c${name}%c: ${fetchedBlobQueue.size} 正在发送有关端点 "${endpointName}" 的 IMAGE 消息`, consoleStyle, '');
 
       // Returns the manipulated blob
       return new Promise((resolve) => {
@@ -125,7 +125,7 @@ inject(() => {
           }));
 
           // Since this code does not run in the userscript, we can't use consoleLog().
-          console.log(`%c${name}%c: ${fetchedBlobQueue.size} Processed blob "${blobUUID}"`, consoleStyle, '');
+          console.log(`%c${name}%c: ${fetchedBlobQueue.size} 已处理 blob "${blobUUID}"`, consoleStyle, '');
         });
 
         window.postMessage({
@@ -137,8 +137,8 @@ inject(() => {
         });
       }).catch(exception => {
         const elapsed = Date.now();
-        console.error(`%c${name}%c: Failed to Promise blob!`, consoleStyle, '');
-        console.groupCollapsed(`%c${name}%c: Details of failed blob Promise:`, consoleStyle, '');
+        console.error(`%c${name}%c: Promise blob 失败！`, consoleStyle, '');
+        console.groupCollapsed(`%c${name}%c: 失败的 blob Promise 详细信息：`, consoleStyle, '');
         console.log(`Endpoint: ${endpointName}\nThere are ${fetchedBlobQueue.size} blobs processing...\nBlink: ${blink.toLocaleString()}\nTime Since Blink: ${String(Math.floor(elapsed/60000)).padStart(2,'0')}:${String(Math.floor(elapsed/1000) % 60).padStart(2,'0')}.${String(elapsed % 1000).padStart(3,'0')} MM:SS.mmm`);
         console.error(`Exception stack:`, exception);
         console.groupEnd();
@@ -212,7 +212,7 @@ apiManager.spontaneousResponseListener(overlayMain); // Reads spontaneous fetch 
 
 observeBlack(); // Observes the black palette color
 
-consoleLog(`%c${name}%c (${version}) userscript has loaded!`, 'color: cornflowerblue;', '');
+consoleLog(`%c${name}%c (${version}) 用户脚本已加载！`, 'color: cornflowerblue;', '');
 
 /** Observe the black color, and add the "Move" button.
  * @since 0.66.3
@@ -230,17 +230,17 @@ function observeBlack() {
     if (!move) {
       move = document.createElement('button');
       move.id = 'bm-button-move';
-      move.textContent = 'Move ↑';
+      move.textContent = '移动 ↑';
       move.className = 'btn btn-soft';
       move.onclick = function() {
         const roundedBox = this.parentNode.parentNode.parentNode.parentNode; // Obtains the rounded box
-        const shouldMoveUp = (this.textContent == 'Move ↑');
+        const shouldMoveUp = (this.textContent == '移动 ↑');
         roundedBox.parentNode.className = roundedBox.parentNode.className.replace(shouldMoveUp ? 'bottom' : 'top', shouldMoveUp ? 'top' : 'bottom'); // Moves the rounded box to the top
         roundedBox.style.borderTopLeftRadius = shouldMoveUp ? '0px' : 'var(--radius-box)';
         roundedBox.style.borderTopRightRadius = shouldMoveUp ? '0px' : 'var(--radius-box)';
         roundedBox.style.borderBottomLeftRadius = shouldMoveUp ? 'var(--radius-box)' : '0px';
         roundedBox.style.borderBottomRightRadius = shouldMoveUp ? 'var(--radius-box)' : '0px';
-        this.textContent = shouldMoveUp ? 'Move ↓' : 'Move ↑';
+        this.textContent = shouldMoveUp ? '移动 ↓' : '移动 ↑';
       }
 
       // Attempts to find the "Paint Pixel" element for anchoring
@@ -255,8 +255,7 @@ function observeBlack() {
 
 /** Deploys the overlay to the page with minimize/maximize functionality.
  * Creates a responsive overlay UI that can toggle between full-featured and minimized states.
- * 
- * Parent/child relationships in the DOM structure below are indicated by indentation.
+ * * Parent/child relationships in the DOM structure below are indicated by indentation.
  * @since 0.58.3
  */
 function buildOverlayMain() {
@@ -278,24 +277,21 @@ function buildOverlayMain() {
   overlayMain.addDiv({'id': 'bm-overlay', 'style': 'top: 10px; right: 75px;'})
     .addDiv({'id': 'bm-contain-header'})
       .addDiv({'id': 'bm-bar-drag'}).buildElement()
-      .addImg({'alt': 'Blue Marble Icon - Click to minimize/maximize', 'src': 'https://raw.githubusercontent.com/SwingTheVine/Wplace-BlueMarble/main/dist/assets/Favicon.png', 'style': 'cursor: pointer;'}, 
+      .addImg({'alt': 'Blue Marble 图标 - 点击最小化/最大化', 'src': 'https://raw.githubusercontent.com/SwingTheVine/Wplace-BlueMarble/main/dist/assets/Favicon.png', 'style': 'cursor: pointer;'}, 
         (instance, img) => {
           /** Click event handler for overlay minimize/maximize functionality.
-           * 
-           * Toggles between two distinct UI states:
+           * * Toggles between two distinct UI states:
            * 1. MINIMIZED STATE (60×76px):
-           *    - Shows only the Blue Marble icon and drag bar
-           *    - Hides all input fields, buttons, and status information
-           *    - Applies fixed dimensions for consistent appearance
-           *    - Repositions icon with 3px right offset for visual centering
-           * 
-           * 2. MAXIMIZED STATE (responsive):
-           *    - Restores full functionality with all UI elements
-           *    - Removes fixed dimensions to allow responsive behavior
-           *    - Resets icon positioning to default alignment
-           *    - Shows success message when returning to maximized state
-           * 
-           * @param {Event} event - The click event object (implicit)
+           * - Shows only the Blue Marble icon and drag bar
+           * - Hides all input fields, buttons, and status information
+           * - Applies fixed dimensions for consistent appearance
+           * - Repositions icon with 3px right offset for visual centering
+           * * 2. MAXIMIZED STATE (responsive):
+           * - Restores full functionality with all UI elements
+           * - Removes fixed dimensions to allow responsive behavior
+           * - Resets icon positioning to default alignment
+           * - Shows success message when returning to maximized state
+           * * @param {Event} event - The click event object (implicit)
            */
           img.addEventListener('click', () => {
             isMinimized = !isMinimized; // Toggle the current state
@@ -468,8 +464,8 @@ function buildOverlayMain() {
             
             // Update alt text to reflect current state for screen readers and tooltips
             img.alt = isMinimized ? 
-              'Blue Marble Icon - Minimized (Click to maximize)' : 
-              'Blue Marble Icon - Maximized (Click to minimize)';
+              'Blue Marble 图标 - 已最小化（点击最大化）' : 
+              'Blue Marble 图标 - 已最大化（点击最小化）';
             
             // No status message needed - state change is visually obvious to users
           });
@@ -481,9 +477,9 @@ function buildOverlayMain() {
     .addHr().buildElement()
 
     .addDiv({'id': 'bm-contain-userinfo'})
-      .addP({'id': 'bm-user-name', 'textContent': 'Username:'}).buildElement()
-      .addP({'id': 'bm-user-droplets', 'textContent': 'Droplets:'}).buildElement()
-      .addP({'id': 'bm-user-nextlevel', 'textContent': 'Next level in...'}).buildElement()
+      .addP({'id': 'bm-user-name', 'textContent': '用户名：'}).buildElement()
+      .addP({'id': 'bm-user-droplets', 'textContent': '水滴数：'}).buildElement()
+      .addP({'id': 'bm-user-nextlevel', 'textContent': '距离下一级...'}).buildElement()
     .buildElement()
 
     .addHr().buildElement()
@@ -501,7 +497,7 @@ function buildOverlayMain() {
             button.onclick = () => {
               const coords = instance.apiManager?.coordsTilePixel; // Retrieves the coords from the API manager
               if (!coords?.[0]) {
-                instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?');
+                instance.handleDisplayError('坐标格式不正确！你是不是还没有点击画布？');
                 return;
               }
               instance.updateInnerHTML('bm-input-tx', coords?.[0] || '');
@@ -512,7 +508,7 @@ function buildOverlayMain() {
             }
           }
         ).buildElement()
-        .addInput({'type': 'number', 'id': 'bm-input-tx', 'placeholder': 'Tl X', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.tx ?? '')}, (instance, input) => {
+        .addInput({'type': 'number', 'id': 'bm-input-tx', 'placeholder': '瓦片 X', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.tx ?? '')}, (instance, input) => {
           //if a paste happens on tx, split and format it into other coordinates if possible
           input.addEventListener("paste", (event) => {
             let splitText = (event.clipboardData || window.clipboardData).getData("text").split(" ").filter(n => n).map(Number).filter(n => !isNaN(n)); //split and filter all Non Numbers
@@ -533,17 +529,17 @@ function buildOverlayMain() {
           input.addEventListener('input', handler);
           input.addEventListener('change', handler);
         }).buildElement()
-        .addInput({'type': 'number', 'id': 'bm-input-ty', 'placeholder': 'Tl Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.ty ?? '')}, (instance, input) => {
+        .addInput({'type': 'number', 'id': 'bm-input-ty', 'placeholder': '瓦片 Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.ty ?? '')}, (instance, input) => {
           const handler = () => persistCoords();
           input.addEventListener('input', handler);
           input.addEventListener('change', handler);
         }).buildElement()
-        .addInput({'type': 'number', 'id': 'bm-input-px', 'placeholder': 'Px X', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.px ?? '')}, (instance, input) => {
+        .addInput({'type': 'number', 'id': 'bm-input-px', 'placeholder': '像素 X', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.px ?? '')}, (instance, input) => {
           const handler = () => persistCoords();
           input.addEventListener('input', handler);
           input.addEventListener('change', handler);
         }).buildElement()
-        .addInput({'type': 'number', 'id': 'bm-input-py', 'placeholder': 'Px Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.py ?? '')}, (instance, input) => {
+        .addInput({'type': 'number', 'id': 'bm-input-py', 'placeholder': '像素 Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true, 'value': (savedCoords.py ?? '')}, (instance, input) => {
           const handler = () => persistCoords();
           input.addEventListener('input', handler);
           input.addEventListener('change', handler);
@@ -552,50 +548,50 @@ function buildOverlayMain() {
       // Color filter UI
       .addDiv({'id': 'bm-contain-colorfilter', 'style': 'max-height: 140px; overflow: auto; border: 1px solid rgba(255,255,255,0.1); padding: 4px; border-radius: 4px; display: none;'})
         .addDiv({'style': 'display: flex; gap: 6px; margin-bottom: 6px;'})
-          .addButton({'id': 'bm-button-colors-enable-all', 'textContent': 'Enable All'}, (instance, button) => {
+          .addButton({'id': 'bm-button-colors-enable-all', 'textContent': '全部启用'}, (instance, button) => {
             button.onclick = () => {
               const t = templateManager.templatesArray[0];
               if (!t?.colorPalette) { return; }
               Object.values(t.colorPalette).forEach(v => v.enabled = true);
               buildColorFilterList();
-              instance.handleDisplayStatus('Enabled all colors');
+              instance.handleDisplayStatus('已启用所有颜色');
             };
           }).buildElement()
-          .addButton({'id': 'bm-button-colors-disable-all', 'textContent': 'Disable All'}, (instance, button) => {
+          .addButton({'id': 'bm-button-colors-disable-all', 'textContent': '全部禁用'}, (instance, button) => {
             button.onclick = () => {
               const t = templateManager.templatesArray[0];
               if (!t?.colorPalette) { return; }
               Object.values(t.colorPalette).forEach(v => v.enabled = false);
               buildColorFilterList();
-              instance.handleDisplayStatus('Disabled all colors');
+              instance.handleDisplayStatus('已禁用所有颜色');
             };
           }).buildElement()
         .buildElement()
         .addDiv({'id': 'bm-colorfilter-list'}).buildElement()
       .buildElement()
-      .addInputFile({'id': 'bm-input-file-template', 'textContent': 'Upload Template', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
+      .addInputFile({'id': 'bm-input-file-template', 'textContent': '上传模板', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
       .addDiv({'id': 'bm-contain-buttons-template'})
-        .addButton({'id': 'bm-button-enable', 'textContent': 'Enable'}, (instance, button) => {
+        .addButton({'id': 'bm-button-enable', 'textContent': '启用'}, (instance, button) => {
           button.onclick = () => {
             instance.apiManager?.templateManager?.setTemplatesShouldBeDrawn(true);
-            instance.handleDisplayStatus(`Enabled templates!`);
+            instance.handleDisplayStatus(`模板已启用！`);
           }
         }).buildElement()
-        .addButton({'id': 'bm-button-create', 'textContent': 'Create'}, (instance, button) => {
+        .addButton({'id': 'bm-button-create', 'textContent': '创建'}, (instance, button) => {
           button.onclick = () => {
             const input = document.querySelector('#bm-input-file-template');
 
             const coordTlX = document.querySelector('#bm-input-tx');
-            if (!coordTlX.checkValidity()) {coordTlX.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
+            if (!coordTlX.checkValidity()) {coordTlX.reportValidity(); instance.handleDisplayError('坐标格式不正确！你是不是还没有点击画布？'); return;}
             const coordTlY = document.querySelector('#bm-input-ty');
-            if (!coordTlY.checkValidity()) {coordTlY.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
+            if (!coordTlY.checkValidity()) {coordTlY.reportValidity(); instance.handleDisplayError('坐标格式不正确！你是不是还没有点击画布？'); return;}
             const coordPxX = document.querySelector('#bm-input-px');
-            if (!coordPxX.checkValidity()) {coordPxX.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
+            if (!coordPxX.checkValidity()) {coordPxX.reportValidity(); instance.handleDisplayError('坐标格式不正确！你是不是还没有点击画布？'); return;}
             const coordPxY = document.querySelector('#bm-input-py');
-            if (!coordPxY.checkValidity()) {coordPxY.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
+            if (!coordPxY.checkValidity()) {coordPxY.reportValidity(); instance.handleDisplayError('坐标格式不正确！你是不是还没有点击画布？'); return;}
 
             // Kills itself if there is no file
-            if (!input?.files[0]) {instance.handleDisplayError(`No file selected!`); return;}
+            if (!input?.files[0]) {instance.handleDisplayError(`未选择文件！`); return;}
 
             templateManager.createTemplate(input.files[0], input.files[0]?.name.replace(/\.[^/.]+$/, ''), [Number(coordTlX.value), Number(coordTlY.value), Number(coordPxX.value), Number(coordPxY.value)]);
 
@@ -604,36 +600,36 @@ function buildOverlayMain() {
             // console.log(`TCoords: ${apiManager.templateCoordsTilePixel}\nCoords: ${apiManager.coordsTilePixel}`);
             // templateManager.setTemplateImage(input.files[0]);
 
-            instance.handleDisplayStatus(`Drew to canvas!`);
+            instance.handleDisplayStatus(`已绘制到画布！`);
           }
         }).buildElement()
-        .addButton({'id': 'bm-button-disable', 'textContent': 'Disable'}, (instance, button) => {
+        .addButton({'id': 'bm-button-disable', 'textContent': '禁用'}, (instance, button) => {
           button.onclick = () => {
             instance.apiManager?.templateManager?.setTemplatesShouldBeDrawn(false);
-            instance.handleDisplayStatus(`Disabled templates!`);
+            instance.handleDisplayStatus(`模板已禁用！`);
           }
         }).buildElement()
       .buildElement()
-      .addTextarea({'id': overlayMain.outputStatusId, 'placeholder': `Status: Sleeping...\nVersion: ${version}`, 'readOnly': true}).buildElement()
+      .addTextarea({'id': overlayMain.outputStatusId, 'placeholder': `状态: 休眠中...\n版本: ${version}`, 'readOnly': true}).buildElement()
       .addDiv({'id': 'bm-contain-buttons-action'})
         .addDiv()
           // .addButton({'id': 'bm-button-teleport', 'className': 'bm-help', 'textContent': '✈'}).buildElement()
           // .addButton({'id': 'bm-button-favorite', 'className': 'bm-help', 'innerHTML': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><polygon points="10,2 12,7.5 18,7.5 13.5,11.5 15.5,18 10,14 4.5,18 6.5,11.5 2,7.5 8,7.5" fill="white"></polygon></svg>'}).buildElement()
           // .addButton({'id': 'bm-button-templates', 'className': 'bm-help', 'innerHTML': '🖌'}).buildElement()
-          .addButton({'id': 'bm-button-convert', 'className': 'bm-help', 'innerHTML': '🎨', 'title': 'Template Color Converter'}, 
+          .addButton({'id': 'bm-button-convert', 'className': 'bm-help', 'innerHTML': '🎨', 'title': '模板颜色转换器'}, 
             (instance, button) => {
             button.addEventListener('click', () => {
               window.open('https://pepoafonso.github.io/color_converter_wplace/', '_blank', 'noopener noreferrer');
             });
           }).buildElement()
-          .addButton({'id': 'bm-button-website', 'className': 'bm-help', 'innerHTML': '🌐', 'title': 'Official Blue Marble Website'}, 
+          .addButton({'id': 'bm-button-website', 'className': 'bm-help', 'innerHTML': '🌐', 'title': 'Blue Marble 官方网站'}, 
             (instance, button) => {
             button.addEventListener('click', () => {
               window.open('https://bluemarble.camilledaguin.fr/', '_blank', 'noopener noreferrer');
             });
           }).buildElement()
         .buildElement()
-        .addSmall({'textContent': 'Made by SwingTheVine', 'style': 'margin-top: auto;'}).buildElement()
+        .addSmall({'textContent': 'SwingTheVine 制作 | Muyue 汉化', 'style': 'margin-top: auto;'}).buildElement()
       .buildElement()
     .buildElement()
   .buildOverlay(document.body);
@@ -643,7 +639,7 @@ function buildOverlayMain() {
     const listContainer = document.querySelector('#bm-colorfilter-list');
     const t = templateManager.templatesArray?.[0];
     if (!listContainer || !t?.colorPalette) {
-      if (listContainer) { listContainer.innerHTML = '<small>No template colors to display.</small>'; }
+      if (listContainer) { listContainer.innerHTML = '<small>无模板颜色可显示。</small>'; }
       return;
     }
 
@@ -684,7 +680,7 @@ function buildOverlayMain() {
       toggle.checked = !!meta.enabled;
       toggle.addEventListener('change', () => {
         meta.enabled = toggle.checked;
-        overlayMain.handleDisplayStatus(`${toggle.checked ? 'Enabled' : 'Disabled'} ${rgb}`);
+        overlayMain.handleDisplayStatus(`${toggle.checked ? '已启用' : '已禁用'} ${rgb}`);
         try {
           const t = templateManager.templatesArray?.[0];
           const key = t?.storageKey;
@@ -726,14 +722,14 @@ function buildTelemetryOverlay(overlay) {
   overlay.addDiv({'id': 'bm-overlay-telemetry', style: 'top: 0px; left: 0px; width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; z-index: 9999;'})
     .addDiv({'id': 'bm-contain-all-telemetry', style: 'display: flex; flex-direction: column; align-items: center;'})
       .addDiv({'id': 'bm-contain-header-telemetry', style: 'margin-top: 10%;'})
-        .addHeader(1, {'textContent': `${name} Telemetry`}).buildElement()
+        .addHeader(1, {'textContent': `Blue Marble 遥测`}).buildElement()
       .buildElement()
 
       .addDiv({'id': 'bm-contain-telemetry', style: 'max-width: 50%; overflow-y: auto; max-height: 80vh;'})
         .addHr().buildElement()
         .addBr().buildElement()
         .addDiv({'style': 'width: fit-content; margin: auto; text-align: center;'})
-        .addButton({'id': 'bm-button-telemetry-more', 'textContent': 'More Information'}, (instance, button) => {
+        .addButton({'id': 'bm-button-telemetry-more', 'textContent': '更多信息'}, (instance, button) => {
           button.onclick = () => {
             window.open('https://github.com/SwingTheVine/Wplace-TelemetryServer#telemetry-data', '_blank', 'noopener noreferrer');
           }
@@ -741,7 +737,7 @@ function buildTelemetryOverlay(overlay) {
         .buildElement()
         .addBr().buildElement()
         .addDiv({style: 'width: fit-content; margin: auto; text-align: center;'})
-          .addButton({'id': 'bm-button-telemetry-enable', 'textContent': 'Enable Telemetry', 'style': 'margin-right: 2ch;'}, (instance, button) => {
+          .addButton({'id': 'bm-button-telemetry-enable', 'textContent': '启用遥测', 'style': 'margin-right: 2ch;'}, (instance, button) => {
             button.onclick = () => {
               const userSettings = JSON.parse(GM_getValue('bmUserSettings', '{}'));
               userSettings.telemetry = 1;
@@ -752,7 +748,7 @@ function buildTelemetryOverlay(overlay) {
               }
             }
           }).buildElement()
-          .addButton({'id': 'bm-button-telemetry-disable', 'textContent': 'Disable Telemetry'}, (instance, button) => {
+          .addButton({'id': 'bm-button-telemetry-disable', 'textContent': '禁用遥测'}, (instance, button) => {
             button.onclick = () => {
               const userSettings = JSON.parse(GM_getValue('bmUserSettings', '{}'));
               userSettings.telemetry = 0;
@@ -765,8 +761,8 @@ function buildTelemetryOverlay(overlay) {
           }).buildElement()
         .buildElement()
         .addBr().buildElement()
-        .addP({'textContent': 'We collect anonymous telemetry data such as your browser, OS, and script version to make the experience better for everyone. The data is never shared personally. The data is never sold. You can turn this off by pressing the \'Disable\' button, but keeping it on helps us improve features and reliability faster. Thank you for supporting the Blue Marble!'}).buildElement()
-        .addP({'textContent': 'You can disable telemetry by pressing the "Disable" button below.'}).buildElement()
+        .addP({'textContent': '我们收集匿名遥测数据，例如您的浏览器、操作系统和脚本版本，以改善每个人的体验。数据绝不会被个人分享，也绝不会被出售。您可以通过按“禁用”按钮来关闭此功能，但保持开启有助于我们更快地改进功能和可靠性。感谢您对 Blue Marble 的支持！'}).buildElement()
+        .addP({'textContent': '您可以通过按下面的“禁用”按钮来禁用遥测。'}).buildElement()
       .buildElement()
     .buildElement()
   .buildOverlay(document.body);
