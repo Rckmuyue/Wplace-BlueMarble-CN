@@ -46,28 +46,42 @@ export default class Template {
     this.storageKey = null; // Key used inside templatesJSON to persist settings
 
     // Build allowed color set from site palette (exclude special Transparent entry by name)
+    // Creates a Set of Wplace palette colors excluding "transparent"
     const allowed = Array.isArray(colorpalette) ? colorpalette : [];
     this.allowedColorsSet = new Set(
       allowed
-        .filter(c => (c?.name || '').toLowerCase() !== 'transparent' && Array.isArray(c?.rgb))
-        .map(c => `${c.rgb[0]},${c.rgb[1]},${c.rgb[2]}`)
+        .filter(color => (color?.name || '').toLowerCase() !== 'transparent' && Array.isArray(color?.rgb))
+        .map(color => `${color.rgb[0]},${color.rgb[1]},${color.rgb[2]}`)
     );
+
     // Ensure template #deface marker is treated as allowed (maps to Transparent color)
     const defaceKey = '222,250,206';
     this.allowedColorsSet.add(defaceKey);
+
+    const keyOther = 'other';
+    this.allowedColorsSet.add(keyOther); // Special "other" key for non-palette colors
+
     // Map rgb-> {id, premium}
     this.rgbToMeta = new Map(
       allowed
-        .filter(c => Array.isArray(c?.rgb))
-        .map(c => [ `${c.rgb[0]},${c.rgb[1]},${c.rgb[2]}`, { id: c.id, premium: !!c.premium, name: c.name } ])
+        .filter(color => Array.isArray(color?.rgb))
+        .map(color => [ `${color.rgb[0]},${color.rgb[1]},${color.rgb[2]}`, { id: color.id, premium: !!color.premium, name: color.name } ])
     );
+
     // Map #deface to Transparent meta for UI naming and ID continuity
     try {
-      const transparent = allowed.find(c => (c?.name || '').toLowerCase() === 'transparent');
+      const transparent = allowed.find(color => (color?.name || '').toLowerCase() === 'transparent');
       if (transparent && Array.isArray(transparent.rgb)) {
         this.rgbToMeta.set(defaceKey, { id: transparent.id, premium: !!transparent.premium, name: transparent.name });
       }
-    } catch (_) {}
+    } catch (ignored) {}
+
+    // Map other key to Other meta for UI naming and ID continuity
+    try {
+      this.rgbToMeta.set(keyOther, { id: 'other', premium: false, name: 'Other' });
+    } catch (ignored) {}
+
+    console.log('模板的允许颜色：', this.allowedColorsSet);
   }
 
   /** Creates chunks of the template for each tile.
@@ -76,7 +90,7 @@ export default class Template {
    * @since 0.65.4
    */
   async createTemplateTiles() {
-    console.log('Template coordinates:', this.coords);
+    console.log('模板坐标：', this.coords);
 
     const shreadSize = 3; // Scale image factor for pixel art enhancement (must be odd)
     const bitmap = await createImageBitmap(this.file); // Create efficient bitmap from uploaded file
@@ -86,7 +100,7 @@ export default class Template {
     // Calculate total pixel count using standard width × height formula
     // TODO: Use non-transparent pixels instead of basic width times height
     const totalPixels = imageWidth * imageHeight;
-    console.log(`Template pixel analysis - Dimensions: ${imageWidth}×${imageHeight} = ${totalPixels.toLocaleString()} pixels`);
+    console.log(`模板像素分析 - 尺寸：${imageWidth}×${imageHeight} = ${totalPixels.toLocaleString()} 像素`);
     
     // Store pixel count in instance property for access by template manager and UI components
     this.pixelCount = totalPixels;
@@ -112,9 +126,9 @@ export default class Template {
           const b = inspectData[idx + 2];
           const a = inspectData[idx + 3];
           if (a === 0) { continue; } // Ignored transparent pixel
-          const key = `${r},${g},${b}`;
           if (r === 222 && g === 250 && b === 206) { deface++; }
-          if (!this.allowedColorsSet.has(key)) { continue; } // Skip non-palette colors (but #deface added to allowed)
+          const key = this.allowedColorsSet.has(`${r},${g},${b}`) ? `${r},${g},${b}` : 'other';
+          //if (!this.allowedColorsSet.has(key)) { continue; } // Skip non-palette colors (but #deface added to allowed)
           required++;
           paletteMap.set(key, (paletteMap.get(key) || 0) + 1);
         }
@@ -133,7 +147,7 @@ export default class Template {
       // Fail-safe: if OffscreenCanvas not available or any error, fall back to width×height
       this.requiredPixelCount = Math.max(0, this.pixelCount);
       this.defacePixelCount = 0;
-      console.warn('Failed to compute required/deface counts. Falling back to total pixels.', err);
+      console.warn('无法计算所需/涂改数量，回退为总像素。', err);
     }
 
     const templateTiles = {}; // Holds the template tiles
@@ -155,7 +169,7 @@ export default class Template {
 
       for (let pixelX = this.coords[2]; pixelX < imageWidth + this.coords[2];) {
 
-        console.log(`Pixel X: ${pixelX}\nPixel Y: ${pixelY}`);
+        console.log(`像素 X: ${pixelX}\n像素 Y: ${pixelY}`);
 
         // Draws the partial tile first, if any
         // This calculates the size based on which is smaller:
@@ -165,7 +179,7 @@ export default class Template {
 
         console.log(`Math.min(${this.tileSize} - (${pixelX} % ${this.tileSize}), ${imageWidth} - (${pixelX - this.coords[2]}))`);
 
-        console.log(`Draw Size X: ${drawSizeX}\nDraw Size Y: ${drawSizeY}`);
+        console.log(`绘制尺寸 X: ${drawSizeX}\n绘制尺寸 Y: ${drawSizeY}`);
 
         // Change the canvas size and wipe the canvas
         const canvasWidth = drawSizeX * shreadSize;// + (pixelX % this.tileSize) * shreadSize;
@@ -173,11 +187,11 @@ export default class Template {
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
 
-        console.log(`Draw X: ${drawSizeX}\nDraw Y: ${drawSizeY}\nCanvas Width: ${canvasWidth}\nCanvas Height: ${canvasHeight}`);
+        console.log(`绘制 X: ${drawSizeX}\n绘制 Y: ${drawSizeY}\n画布宽度: ${canvasWidth}\n画布高度: ${canvasHeight}`);
 
         context.imageSmoothingEnabled = false; // Nearest neighbor
 
-        console.log(`Getting X ${pixelX}-${pixelX + drawSizeX}\nGetting Y ${pixelY}-${pixelY + drawSizeY}`);
+        console.log(`获取 X ${pixelX}-${pixelX + drawSizeX}\n获取 Y ${pixelY}-${pixelY + drawSizeY}`);
 
         // Draws the template segment on this tile segment
         context.clearRect(0, 0, canvasWidth, canvasHeight); // Clear any previous drawing (only runs when canvas size does not change)
@@ -228,13 +242,13 @@ export default class Template {
               const g = imageData.data[pixelIndex + 1];
               const b = imageData.data[pixelIndex + 2];
               if (!this.allowedColorsSet.has(`${r},${g},${b}`)) {
-                imageData.data[pixelIndex + 3] = 0; // hide non-palette colors
+                //imageData.data[pixelIndex + 3] = 0; // hide non-palette colors
               }
             }
           }
         }
 
-        console.log(`Shreaded pixels for ${pixelX}, ${pixelY}`, imageData);
+        console.log(`为 ${pixelX}, ${pixelY} 碎片化像素`, imageData);
 
         context.putImageData(imageData, 0, 0);
 
@@ -264,8 +278,8 @@ export default class Template {
       pixelY += drawSizeY;
     }
 
-    console.log('Template Tiles: ', templateTiles);
-    console.log('Template Tiles Buffers: ', templateTilesBuffers);
+    console.log('模板区块: ', templateTiles);
+    console.log('模板区块缓冲区: ', templateTilesBuffers);
     return { templateTiles, templateTilesBuffers };
   }
 }

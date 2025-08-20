@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blue Marble CN
 // @namespace    https://github.com/SwingTheVine/
-// @version      0.84.0-CN
+// @version      0.85.0-CN
 // @description  【汉化版】Blue Marble 用户脚本，用于增强 Wplace.live 体验。本脚本为 Blue Marble 的汉化分支，保留原作者 SwingTheVine 信息，遵循 MPL-2.0 协议。
 // @author       SwingTheVine
 // @translator   Muyue (汉化)

@@ -139,8 +139,8 @@ inject(() => {
         const elapsed = Date.now();
         console.error(`%c${name}%c: Promise blob 失败！`, consoleStyle, '');
         console.groupCollapsed(`%c${name}%c: 失败的 blob Promise 详细信息：`, consoleStyle, '');
-        console.log(`Endpoint: ${endpointName}\nThere are ${fetchedBlobQueue.size} blobs processing...\nBlink: ${blink.toLocaleString()}\nTime Since Blink: ${String(Math.floor(elapsed/60000)).padStart(2,'0')}:${String(Math.floor(elapsed/1000) % 60).padStart(2,'0')}.${String(elapsed % 1000).padStart(3,'0')} MM:SS.mmm`);
-        console.error(`Exception stack:`, exception);
+        console.log(`端点: ${endpointName}\n当前有 ${fetchedBlobQueue.size} 个 blob 正在处理...\n闪烁: ${blink.toLocaleString()}\n距离上次闪烁的时间: ${String(Math.floor(elapsed/60000)).padStart(2,'0')}:${String(Math.floor(elapsed/1000) % 60).padStart(2,'0')}.${String(elapsed % 1000).padStart(3,'0')} 分:秒.毫秒`);
+        console.error(`异常堆栈:`, exception);
         console.groupEnd();
       });
 
@@ -255,7 +255,8 @@ function observeBlack() {
 
 /** Deploys the overlay to the page with minimize/maximize functionality.
  * Creates a responsive overlay UI that can toggle between full-featured and minimized states.
- * * Parent/child relationships in the DOM structure below are indicated by indentation.
+ * 
+ * Parent/child relationships in the DOM structure below are indicated by indentation.
  * @since 0.58.3
  */
 function buildOverlayMain() {
@@ -280,18 +281,21 @@ function buildOverlayMain() {
       .addImg({'alt': 'Blue Marble 图标 - 点击最小化/最大化', 'src': 'https://raw.githubusercontent.com/SwingTheVine/Wplace-BlueMarble/main/dist/assets/Favicon.png', 'style': 'cursor: pointer;'}, 
         (instance, img) => {
           /** Click event handler for overlay minimize/maximize functionality.
-           * * Toggles between two distinct UI states:
+           * 
+           * Toggles between two distinct UI states:
            * 1. MINIMIZED STATE (60×76px):
-           * - Shows only the Blue Marble icon and drag bar
-           * - Hides all input fields, buttons, and status information
-           * - Applies fixed dimensions for consistent appearance
-           * - Repositions icon with 3px right offset for visual centering
-           * * 2. MAXIMIZED STATE (responsive):
-           * - Restores full functionality with all UI elements
-           * - Removes fixed dimensions to allow responsive behavior
-           * - Resets icon positioning to default alignment
-           * - Shows success message when returning to maximized state
-           * * @param {Event} event - The click event object (implicit)
+           *    - Shows only the Blue Marble icon and drag bar
+           *    - Hides all input fields, buttons, and status information
+           *    - Applies fixed dimensions for consistent appearance
+           *    - Repositions icon with 3px right offset for visual centering
+           * 
+           * 2. MAXIMIZED STATE (responsive):
+           *    - Restores full functionality with all UI elements
+           *    - Removes fixed dimensions to allow responsive behavior
+           *    - Resets icon positioning to default alignment
+           *    - Shows success message when returning to maximized state
+           * 
+           * @param {Event} event - The click event object (implicit)
            */
           img.addEventListener('click', () => {
             isMinimized = !isMinimized; // Toggle the current state
@@ -478,7 +482,7 @@ function buildOverlayMain() {
 
     .addDiv({'id': 'bm-contain-userinfo'})
       .addP({'id': 'bm-user-name', 'textContent': '用户名：'}).buildElement()
-      .addP({'id': 'bm-user-droplets', 'textContent': '水滴数：'}).buildElement()
+      .addP({'id': 'bm-user-droplets', 'textContent': 'Droplets数量:'}).buildElement()
       .addP({'id': 'bm-user-nextlevel', 'textContent': '距离下一级...'}).buildElement()
     .buildElement()
 
@@ -648,31 +652,40 @@ function buildOverlayMain() {
       .sort((a,b) => b[1].count - a[1].count); // sort by frequency desc
 
     for (const [rgb, meta] of entries) {
-      const [r,g,b] = rgb.split(',').map(Number);
-
-      const row = document.createElement('div');
+      let row = document.createElement('div');
       row.style.display = 'flex';
       row.style.alignItems = 'center';
       row.style.gap = '8px';
       row.style.margin = '4px 0';
 
-      const swatch = document.createElement('div');
+      let swatch = document.createElement('div');
       swatch.style.width = '14px';
       swatch.style.height = '14px';
       swatch.style.border = '1px solid rgba(255,255,255,0.5)';
-      swatch.style.background = `rgb(${r},${g},${b})`;
 
-      const label = document.createElement('span');
+      let label = document.createElement('span');
       label.style.fontSize = '12px';
       let labelText = `${meta.count.toLocaleString()}`;
-      try {
-        const tMeta = templateManager.templatesArray?.[0]?.rgbToMeta?.get(rgb);
-        if (tMeta && typeof tMeta.id === 'number') {
-          const displayName = tMeta?.name || `rgb(${r},${g},${b})`;
-          const starLeft = tMeta.premium ? '★ ' : '';
-          labelText = `#${tMeta.id} ${starLeft}${displayName} • ${labelText}`;
-        }
-      } catch (_) {}
+
+      // Special handling for "other" and "transparent"
+      if (rgb === 'other') {
+        swatch.style.background = '#888'; // Neutral color for "Other"
+        labelText = `Other • ${labelText}`;
+      } else if (rgb === '#deface') {
+        swatch.style.background = '#deface';
+        labelText = `Transparent • ${labelText}`;
+      } else {
+        const [r, g, b] = rgb.split(',').map(Number);
+        swatch.style.background = `rgb(${r},${g},${b})`;
+        try {
+          const tMeta = templateManager.templatesArray?.[0]?.rgbToMeta?.get(rgb);
+          if (tMeta && typeof tMeta.id === 'number') {
+            const displayName = tMeta?.name || `rgb(${r},${g},${b})`;
+            const starLeft = tMeta.premium ? '★ ' : '';
+            labelText = `#${tMeta.id} ${starLeft}${displayName} • ${labelText}`;
+          }
+        } catch (ignored) {}
+      }
       label.textContent = labelText;
 
       const toggle = document.createElement('input');
@@ -722,7 +735,7 @@ function buildTelemetryOverlay(overlay) {
   overlay.addDiv({'id': 'bm-overlay-telemetry', style: 'top: 0px; left: 0px; width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; z-index: 9999;'})
     .addDiv({'id': 'bm-contain-all-telemetry', style: 'display: flex; flex-direction: column; align-items: center;'})
       .addDiv({'id': 'bm-contain-header-telemetry', style: 'margin-top: 10%;'})
-        .addHeader(1, {'textContent': `Blue Marble 遥测`}).buildElement()
+        .addHeader(1, {'textContent': `${name} Telemetry`}).buildElement()
       .buildElement()
 
       .addDiv({'id': 'bm-contain-telemetry', style: 'max-width: 50%; overflow-y: auto; max-height: 80vh;'})
